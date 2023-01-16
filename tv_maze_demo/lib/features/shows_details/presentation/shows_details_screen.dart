@@ -53,35 +53,13 @@ class _ShowsDetailsScreenState extends State<ShowsDetailsScreen> {
                     const SizedBox(height: 50),
                     _buildTitle(state),
                     const SizedBox(height: 10),
-                    _buildChips(state.showModel.genres ?? []),
+                    _buildGenres(state.showModel.genres ?? []),
                     const SizedBox(height: 30),
                     const SubtitleWidget(subtitle: "About "),
                     const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            ConvertHelper.toPlainText(state.showModel.summary),
-                            textAlign: TextAlign.start,
-                            style: AppStyles.bodyMedium(
-                              AppColors.primary,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    _buildSummary(state),
                     const SizedBox(height: 30),
-                    Row(children: [
-                      Expanded(
-                        child: Text(
-                          "Episodes ",
-                          textAlign: TextAlign.start,
-                          style: AppStyles.subtitleMedium(
-                            AppColors.primary,
-                          ),
-                        ),
-                      )
-                    ]),
+                    const SubtitleWidget(subtitle: "Episodes "),
                     const SizedBox(height: 10),
                     _buildEpisodeList(state.showModel.episodes ?? [])
                   ],
@@ -93,6 +71,22 @@ class _ShowsDetailsScreenState extends State<ShowsDetailsScreen> {
           return Container();
         }
       }),
+    );
+  }
+
+  Row _buildSummary(ShowsDetailsSucesss state) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            ConvertHelper.toPlainText(state.showModel.summary),
+            textAlign: TextAlign.start,
+            style: AppStyles.bodyMedium(
+              AppColors.primary,
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -128,7 +122,7 @@ class _ShowsDetailsScreenState extends State<ShowsDetailsScreen> {
     );
   }
 
-  Row _buildChips(List<String> list) {
+  Row _buildGenres(List<String> list) {
     List<Widget> genreChips = [];
     for (var element in list) {
       genreChips.add(
