@@ -1,8 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:tv_maze_demo/core/network/models/episode_model.dart';
-import 'package:tv_maze_demo/core/network/models/image_model.dart';
-import 'package:tv_maze_demo/core/network/models/mappers/episode_model_mapper.dart';
-import 'package:tv_maze_demo/core/network/models/mappers/image_model_mapper.dart';
+import 'package:tv_maze_demo/core/models/episode_model.dart';
+import 'api_converters/api_converter.dart';
 
 part 'show_model.g.dart';
 
@@ -12,10 +10,10 @@ class ShowModel {
   String? url;
   String? name;
   List<String>? genres;
-  @JsonKey(fromJson: ImageModelMapper.convertModelToString)
+  @JsonKey(fromJson: ApiConverter.convertModelToString)
   String? image;
   String? summary;
-  @JsonKey(fromJson: EpisodeModelMapper.convertToEpisodeList, name: "_embedded")
+  @JsonKey(fromJson: ApiConverter.convertToEpisodeList, name: "_embedded")
   List<EpisodeModel>? episodes;
 
   ShowModel(this.id, this.url, this.name, this.genres, this.image, this.summary,

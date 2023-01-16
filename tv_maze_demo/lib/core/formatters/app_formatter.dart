@@ -1,6 +1,6 @@
 import 'package:html/parser.dart';
 
-class ConvertHelper {
+class AppFormatter {
   static String toPlainText(String? stringToConvert) {
     var text = parse(stringToConvert ?? "");
     final String parsedString =

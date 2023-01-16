@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:tv_maze_demo/core/network/generic/exceptions/app_exceptions.dart';
-import 'package:tv_maze_demo/core/utils/constants/app_constants.dart';
+import 'package:tv_maze_demo/core/network/app_exceptions.dart';
+import 'package:tv_maze_demo/core/constants/app_constants.dart';
 
 class BaseApi {
   late Dio dio;

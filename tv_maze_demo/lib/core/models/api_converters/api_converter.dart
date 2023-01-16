@@ -1,6 +1,6 @@
-import 'package:tv_maze_demo/core/network/models/episode_model.dart';
+import 'package:tv_maze_demo/core/models/episode_model.dart';
 
-class EpisodeModelMapper {
+class ApiConverter {
   static List<EpisodeModel> convertToEpisodeList(Map<String, dynamic> json) {
     var episodes = <EpisodeModel>[];
     if (json['episodes'] != null) {
@@ -9,5 +9,13 @@ class EpisodeModelMapper {
       });
     }
     return episodes;
+  }
+
+  static String convertModelToString(Map<String, dynamic> json) {
+    var imageUrl = "";
+    if (json['original'] != null) {
+      imageUrl = json['original'];
+    }
+    return imageUrl;
   }
 }

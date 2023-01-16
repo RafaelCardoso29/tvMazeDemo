@@ -2,9 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tv_maze_demo/bloc_dependecy.dart';
-import 'package:tv_maze_demo/core/utils/constants/app_colors.dart';
-import 'package:tv_maze_demo/core/utils/routes/app_navigator.dart';
+import 'package:tv_maze_demo/core/constants/app_colors.dart';
+import 'package:tv_maze_demo/core/routes/app_navigator.dart';
 
 void main() {
   runApp(const GoogleBooksDemo());
@@ -53,13 +54,11 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           SizedBox(
-            height: 40,
-            child: CircularProgressIndicator(
-              color: Colors.white,
-            ),
-          )
+              height: 100,
+              width: 100,
+              child: Image.asset("assets/images/logo.png"))
         ],
       )),
     );

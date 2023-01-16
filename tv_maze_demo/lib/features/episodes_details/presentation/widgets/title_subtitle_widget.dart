@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tv_maze_demo/core/utils/constants/app_colors.dart';
-import 'package:tv_maze_demo/core/utils/constants/app_styles.dart';
+import 'package:tv_maze_demo/core/constants/app_colors.dart';
+import 'package:tv_maze_demo/core/constants/app_styles.dart';
 
 class TitleSubtitleWidget extends StatelessWidget {
   final String? title;
@@ -17,7 +17,7 @@ class TitleSubtitleWidget extends StatelessWidget {
             Expanded(
               child: Text(title ?? "",
                   textAlign: TextAlign.start,
-                  style: AppStyles.titleLarge(
+                  style: AppStyles.titleLargeMedium(
                     AppColors.primary,
                   )),
             ),

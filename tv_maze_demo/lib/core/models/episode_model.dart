@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:tv_maze_demo/core/network/models/mappers/image_model_mapper.dart';
+import 'package:tv_maze_demo/core/models/api_converters/api_converter.dart';
 
 part 'episode_model.g.dart';
 
@@ -7,7 +7,7 @@ part 'episode_model.g.dart';
 class EpisodeModel {
   int? id;
   String? name;
-  @JsonKey(fromJson: ImageModelMapper.convertModelToString)
+  @JsonKey(fromJson: ApiConverter.convertModelToString)
   String? image;
   String? summary;
   int? season;

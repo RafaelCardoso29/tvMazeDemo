@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tv_maze_demo/core/network/models/episode_model.dart';
-import 'package:tv_maze_demo/core/utils/constants/app_colors.dart';
-import 'package:tv_maze_demo/core/utils/constants/app_routes.dart';
-import 'package:tv_maze_demo/core/utils/constants/app_styles.dart';
+import 'package:tv_maze_demo/core/models/episode_model.dart';
+import 'package:tv_maze_demo/core/constants/app_colors.dart';
+import 'package:tv_maze_demo/core/routes/app_routes.dart';
+import 'package:tv_maze_demo/core/constants/app_styles.dart';
 
 class EpisodeItem extends StatelessWidget {
   final EpisodeModel episodeModel;
@@ -20,19 +20,23 @@ class EpisodeItem extends StatelessWidget {
             arguments: episodeModel);
       },
       child: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Flexible(
             flex: 1,
             child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Hero(
                   tag: episodeModel.id ?? '',
                   child: SizedBox(
-                    height: 70,
-                    width: 90,
+                    height: 85,
+                    width: 122,
                     child: Image.network(
                       episodeModel.image ?? "",
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                     ),
                   ),
                 )
@@ -45,8 +49,8 @@ class EpisodeItem extends StatelessWidget {
           Flexible(
             flex: 1,
             child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
                   children: [

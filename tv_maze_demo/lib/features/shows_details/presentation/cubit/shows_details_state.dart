@@ -8,7 +8,7 @@ class ShowsDetailsInitial extends ShowsDetailsState {}
 class ShowsDetailsLoading extends ShowsDetailsState {}
 
 class ShowsDetailsError extends ShowsDetailsState {
-  final String error;
+  final String? error;
   ShowsDetailsError(this.error);
 }
 

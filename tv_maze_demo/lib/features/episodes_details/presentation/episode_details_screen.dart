@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tv_maze_demo/core/network/models/episode_model.dart';
-import 'package:tv_maze_demo/core/utils/constants/app_colors.dart';
-import 'package:tv_maze_demo/core/utils/constants/app_styles.dart';
-import 'package:tv_maze_demo/core/utils/helpers/convert_helper.dart';
+import 'package:tv_maze_demo/core/models/episode_model.dart';
+import 'package:tv_maze_demo/core/constants/app_colors.dart';
+import 'package:tv_maze_demo/core/constants/app_styles.dart';
+import 'package:tv_maze_demo/core/formatters/app_formatter.dart';
 import 'package:tv_maze_demo/features/episodes_details/presentation/widgets/title_subtitle_widget.dart';
 
 class EpisodeDetailsScreen extends StatelessWidget {
@@ -27,9 +27,7 @@ class EpisodeDetailsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(children: [
-            Hero(
-                tag: episodeModel.id ?? '',
-                child: Image.network(episodeModel.image ?? "")),
+            _buildImageCover(),
             const SizedBox(height: 20),
             TitleSubtitleWidget(
               title: episodeModel.name ?? "",
@@ -41,7 +39,7 @@ class EpisodeDetailsScreen extends StatelessWidget {
             ),
             TitleSubtitleWidget(
               title: "Synopsis",
-              subtitle: ConvertHelper.toPlainText(episodeModel.summary),
+              subtitle: AppFormatter.toPlainText(episodeModel.summary),
             ),
             const SizedBox(
               height: 20,
@@ -52,47 +50,81 @@ class EpisodeDetailsScreen extends StatelessWidget {
     );
   }
 
+  Hero _buildImageCover() {
+    return Hero(
+        tag: episodeModel.id ?? '',
+        child: Image.network(episodeModel.image ?? ""));
+  }
+
   Row _buildEpisodeSeason() {
     return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Text(
-          "Episode ",
-          style: AppStyles.titleMedium(AppColors.secundary),
+        Row(
+          children: [
+            Text(
+              "Episode ",
+              style: AppStyles.titleMedium(AppColors.secundary),
+            ),
+            const SizedBox(
+              width: 1,
+            ),
+          ],
         ),
-        const SizedBox(
-          width: 4,
+        Row(
+          children: [
+            Text(
+              episodeModel.number.toString(),
+              style: AppStyles.titleMedium(AppColors.primary),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+          ],
         ),
-        Text(
-          episodeModel.number.toString(),
-          style: AppStyles.titleMedium(AppColors.primary),
+        Row(
+          children: [
+            Text(
+              "Season ",
+              style: AppStyles.titleMedium(AppColors.secundary),
+            ),
+            const SizedBox(
+              width: 1,
+            ),
+          ],
         ),
-        const SizedBox(
-          width: 12,
+        Row(
+          children: [
+            Text(
+              episodeModel.season.toString(),
+              style: AppStyles.titleMedium(AppColors.primary),
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+          ],
         ),
-        Text(
-          "Season ",
-          style: AppStyles.titleMedium(AppColors.secundary),
+        Row(
+          children: [
+            Text(
+              "Duration ",
+              style: AppStyles.titleMedium(AppColors.secundary),
+            ),
+            const SizedBox(
+              width: 1,
+            ),
+          ],
         ),
-        const SizedBox(
-          width: 4,
-        ),
-        Text(
-          episodeModel.season.toString(),
-          style: AppStyles.titleMedium(AppColors.primary),
-        ),
-        const SizedBox(
-          width: 12,
-        ),
-        Text(
-          "Duration ",
-          style: AppStyles.titleMedium(AppColors.secundary),
-        ),
-        const SizedBox(
-          width: 4,
-        ),
-        Text(
-          "${episodeModel.runtime} minutes",
-          style: AppStyles.titleMedium(AppColors.primary),
+        Expanded(
+          child: Row(
+            children: [
+              Text(
+                "${episodeModel.runtime} minutes",
+                style: AppStyles.titleMedium(AppColors.primary),
+              ),
+            ],
+          ),
         ),
       ],
     );

@@ -1,7 +1,6 @@
-import 'package:tv_maze_demo/core/network/generic/base_api.dart';
-import 'package:tv_maze_demo/core/network/generic/exceptions/app_exceptions.dart';
-
-import 'package:tv_maze_demo/core/network/models/show_model.dart';
+import 'package:tv_maze_demo/core/models/show_model.dart';
+import 'package:tv_maze_demo/core/network/base_api.dart';
+import 'package:tv_maze_demo/core/network/app_exceptions.dart';
 
 abstract class ShowsDetailsDataSource {
   Future<ShowModel> getShow();
@@ -19,7 +18,6 @@ class ShowsDetailsRemoteDataSource implements ShowsDetailsDataSource {
       final showModel = ShowModel.fromJson(response);
       return showModel;
     } catch (e) {
-      print(e.toString());
       throw GenericApiError(e.toString());
     }
   }

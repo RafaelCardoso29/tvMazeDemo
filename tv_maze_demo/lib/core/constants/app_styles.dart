@@ -3,10 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppStyles {
   static TextStyle titleLarge(Color textColor) => GoogleFonts.roboto(
-      fontSize: 24, fontWeight: FontWeight.w500, color: textColor);
+      fontSize: 32, fontWeight: FontWeight.w500, color: textColor);
 
   static TextStyle titleLargeMedium(Color textColor) => GoogleFonts.roboto(
-      fontSize: 24, fontWeight: FontWeight.w300, color: textColor);
+      fontSize: 24, fontWeight: FontWeight.w500, color: textColor);
   static TextStyle titleMedium(Color textColor) => GoogleFonts.roboto(
       fontSize: 16, fontWeight: FontWeight.w600, color: textColor);
 

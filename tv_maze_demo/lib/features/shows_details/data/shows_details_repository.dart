@@ -1,4 +1,4 @@
-import 'package:tv_maze_demo/core/network/models/show_model.dart';
+import 'package:tv_maze_demo/core/models/show_model.dart';
 import 'package:tv_maze_demo/features/shows_details/data/shows_details_data_source.dart';
 
 class ShowsDetailsRepository {

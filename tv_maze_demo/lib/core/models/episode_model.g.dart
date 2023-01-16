@@ -9,7 +9,7 @@ part of 'episode_model.dart';
 EpisodeModel _$EpisodeModelFromJson(Map<String, dynamic> json) => EpisodeModel(
       id: json['id'] as int?,
       name: json['name'] as String?,
-      image: ImageModelMapper.convertModelToString(
+      image: ApiConverter.convertModelToString(
           json['image'] as Map<String, dynamic>),
       summary: json['summary'] as String?,
       season: json['season'] as int?,

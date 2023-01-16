@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tv_maze_demo/core/network/models/episode_model.dart';
-import 'package:tv_maze_demo/core/utils/constants/app_routes.dart';
+import 'package:tv_maze_demo/core/models/episode_model.dart';
+import 'package:tv_maze_demo/core/routes/app_routes.dart';
 import 'package:tv_maze_demo/features/episodes_details/presentation/episode_details_screen.dart';
 import 'package:tv_maze_demo/features/shows_details/presentation/shows_details_screen.dart';
 
