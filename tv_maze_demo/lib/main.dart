@@ -22,7 +22,8 @@ class GoogleBooksDemo extends StatelessWidget {
         home: const SplashScreen(),
         onGenerateRoute: AppNavigator.generateRoute,
         theme: ThemeData(
-            backgroundColor: Colors.white, primaryColor: AppColors.primary),
+            backgroundColor: AppColors.backgroundColor,
+            primaryColor: AppColors.primary),
       ),
     );
   }
@@ -39,7 +40,6 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-
     Timer(
         const Duration(seconds: 3),
         () =>
@@ -54,8 +54,11 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
-          CircularProgressIndicator(
-            color: Colors.white,
+          SizedBox(
+            height: 40,
+            child: CircularProgressIndicator(
+              color: Colors.white,
+            ),
           )
         ],
       )),

@@ -15,7 +15,7 @@ class ShowModel {
   @JsonKey(fromJson: ImageModelMapper.convertModelToString)
   String? image;
   String? summary;
-  @JsonKey(fromJson: EpisodeModelMapper.convertToEpisodeList, name: "eEmbedded")
+  @JsonKey(fromJson: EpisodeModelMapper.convertToEpisodeList, name: "_embedded")
   List<EpisodeModel>? episodes;
 
   ShowModel(this.id, this.url, this.name, this.genres, this.image, this.summary,

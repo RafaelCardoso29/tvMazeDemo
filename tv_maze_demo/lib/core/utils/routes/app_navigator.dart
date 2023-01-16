@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tv_maze_demo/core/network/models/episode_model.dart';
 import 'package:tv_maze_demo/core/utils/constants/app_routes.dart';
+import 'package:tv_maze_demo/features/episodes_details/presentation/episode_details_screen.dart';
 import 'package:tv_maze_demo/features/shows_details/presentation/shows_details_screen.dart';
 
 class AppNavigator {
@@ -14,17 +16,12 @@ class AppNavigator {
           settings: settings,
         );
 
-      case AppRoutes.episodesListScreen:
-        var model = (args as dynamic);
+      case AppRoutes.episodeDetailsScreen:
+        var model = (args as EpisodeModel);
         return MaterialPageRoute(
-          builder: (_) => const ShowsDetailsScreen(),
-          settings: settings,
-        );
-
-      case AppRoutes.episodesDetailsScreen:
-        var model = (args as dynamic);
-        return MaterialPageRoute(
-          builder: (_) => const ShowsDetailsScreen(),
+          builder: (_) => EpisodeDetailsScreen(
+            episodeModel: model,
+          ),
           settings: settings,
         );
       default:

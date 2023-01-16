@@ -11,10 +11,11 @@ ShowModel _$ShowModelFromJson(Map<String, dynamic> json) => ShowModel(
       json['url'] as String?,
       json['name'] as String?,
       (json['genres'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      ImageModelMapper.convertModelToString(json['image'] as ImageModel),
+      ImageModelMapper.convertModelToString(
+          json['image'] as Map<String, dynamic>),
       json['summary'] as String?,
       EpisodeModelMapper.convertToEpisodeList(
-          json['eEmbedded'] as Map<String, dynamic>),
+          json['_embedded'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ShowModelToJson(ShowModel instance) => <String, dynamic>{
@@ -24,5 +25,5 @@ Map<String, dynamic> _$ShowModelToJson(ShowModel instance) => <String, dynamic>{
       'genres': instance.genres,
       'image': instance.image,
       'summary': instance.summary,
-      'eEmbedded': instance.episodes,
+      '_embedded': instance.episodes,
     };
