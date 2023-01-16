@@ -37,7 +37,7 @@ class _ShowsDetailsScreenState extends State<ShowsDetailsScreen> {
     return BlocBuilder<ShowsDetailsCubit, ShowsDetailsState>(
       builder: ((context, state) {
         if (state is ShowsDetailsLoading) {
-          return const CircularProgressIndicator.adaptive();
+          return const Scaffold(body: CircularProgressIndicator.adaptive());
         } else if (state is ShowsDetailsSucesss) {
           return Scaffold(
             backgroundColor: AppColors.backgroundColor,
@@ -67,11 +67,23 @@ class _ShowsDetailsScreenState extends State<ShowsDetailsScreen> {
               ),
             ),
           );
+        } else if (state is ShowsDetailsError) {
+          return _buildErrorState(state);
         } else {
           return Container();
         }
       }),
     );
+  }
+
+  Scaffold _buildErrorState(ShowsDetailsError state) {
+    return Scaffold(
+        body: Center(
+      child: Text(state.error,
+          style: AppStyles.titleLarge(
+            AppColors.primary,
+          )),
+    ));
   }
 
   Row _buildSummary(ShowsDetailsSucesss state) {
@@ -146,18 +158,21 @@ class _ShowsDetailsScreenState extends State<ShowsDetailsScreen> {
     );
   }
 
-  ListView _buildEpisodeList(List<EpisodeModel> episodes) {
-    return ListView.separated(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemBuilder: ((context, index) {
-          return EpisodeItem(context: context, episodeModel: episodes[index]);
-        }),
-        separatorBuilder: ((context, index) {
-          return const SizedBox(
-            height: 20,
-          );
-        }),
-        itemCount: episodes.length);
+  Visibility _buildEpisodeList(List<EpisodeModel> episodes) {
+    return Visibility(
+      visible: episodes.isNotEmpty,
+      child: ListView.separated(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: ((context, index) {
+            return EpisodeItem(context: context, episodeModel: episodes[index]);
+          }),
+          separatorBuilder: ((context, index) {
+            return const SizedBox(
+              height: 20,
+            );
+          }),
+          itemCount: episodes.length),
+    );
   }
 }

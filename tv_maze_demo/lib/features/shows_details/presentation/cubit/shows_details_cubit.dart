@@ -12,8 +12,11 @@ class ShowsDetailsCubit extends Cubit<ShowsDetailsState> {
 
   void getShow() async {
     emit(ShowsDetailsLoading());
-    var response = await _repository.getShow();
-
-    emit(ShowsDetailsSucesss(response));
+    try {
+      var response = await _repository.getShow();
+      emit(ShowsDetailsSucesss(response));
+    } catch (e) {
+      emit(ShowsDetailsError(e.toString()));
+    }
   }
 }
