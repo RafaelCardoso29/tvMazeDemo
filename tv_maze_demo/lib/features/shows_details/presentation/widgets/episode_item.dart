@@ -37,6 +37,10 @@ class EpisodeItem extends StatelessWidget {
                     child: Image.network(
                       episodeModel.image ?? "",
                       fit: BoxFit.fill,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset("assets/images/placeholder.png",
+                            width: double.infinity, fit: BoxFit.scaleDown);
+                      },
                     ),
                   ),
                 )

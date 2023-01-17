@@ -11,10 +11,10 @@ ShowModel _$ShowModelFromJson(Map<String, dynamic> json) => ShowModel(
       json['url'] as String?,
       json['name'] as String?,
       (json['genres'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      ApiConverter.convertModelToString(json['image'] as Map<String, dynamic>),
+      ApiConverter.convertModelToString(json['image'] as Map<String, dynamic>?),
       json['summary'] as String?,
       ApiConverter.convertToEpisodeList(
-          json['_embedded'] as Map<String, dynamic>),
+          json['_embedded'] as Map<String, dynamic>?),
     );
 
 Map<String, dynamic> _$ShowModelToJson(ShowModel instance) => <String, dynamic>{

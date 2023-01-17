@@ -39,7 +39,8 @@ class EpisodeDetailsScreen extends StatelessWidget {
             ),
             TitleSubtitleWidget(
               title: "Synopsis",
-              subtitle: AppFormatter.toPlainText(episodeModel.summary),
+              subtitle: AppFormatter.toPlainText(
+                  episodeModel.summary ?? "No Summary available"),
             ),
             const SizedBox(
               height: 20,
@@ -53,7 +54,13 @@ class EpisodeDetailsScreen extends StatelessWidget {
   Hero _buildImageCover() {
     return Hero(
         tag: episodeModel.id ?? '',
-        child: Image.network(episodeModel.image ?? ""));
+        child: Image.network(
+          episodeModel.image ?? "",
+          errorBuilder: (context, error, stackTrace) {
+            return Image.asset("assets/images/placeholder.png",
+                height: 200, width: double.infinity, fit: BoxFit.scaleDown);
+          },
+        ));
   }
 
   Row _buildEpisodeSeason() {

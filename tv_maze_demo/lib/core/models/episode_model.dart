@@ -7,7 +7,7 @@ part 'episode_model.g.dart';
 class EpisodeModel {
   int? id;
   String? name;
-  @JsonKey(fromJson: ApiConverter.convertModelToString)
+  @JsonKey(fromJson: ApiConverter.convertModelToString, includeIfNull: false)
   String? image;
   String? summary;
   int? season;
